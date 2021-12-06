@@ -7,7 +7,7 @@ from HoG import extract_features
 from skimage import color
 from skimage.transform import pyramid_gaussian
 
-image = cv2.imread('./test/b.jpg', 1)
+image = cv2.imread('./test/bwhuman2.png', 1)
 image = cv2.resize(image,(400,256))
 size = (64,128)
 step_size = (9,9)
@@ -48,7 +48,8 @@ sc = [score[0] for (x, y, score, w, h) in detections]
 print ("sc: ", sc)
 sc = np.array(sc)
 pick = non_max_suppression(rects, probs = sc, overlapThresh = 0.3)
-for(x1, y1, x2, y2) in pick:
+print(pick)
+for (x1, y1, x2, y2) in pick:
     cv2.rectangle(clone, (x1, y1), (x2, y2), (0, 255, 0), 2)
     cv2.putText(clone,'Person',(x1-2,y1-2),1,0.75,(121,12,34),1)
 cv2.imshow('Person Detection',clone)
