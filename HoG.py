@@ -47,9 +47,7 @@ def compute_hog_cell(n_orientations: int, magnitudes: np.ndarray, orientations: 
             orientation = orientations[i, j]
             lower_bin_index = int(orientation / bin_width)
             if lower_bin_index < 9:
-                hog[lower_bin_index] += magnitudes[i, j]
-            else:
-                print(lower_bin_index)
+                hog[lower_bin_index] += magnitudes[i, j]            
 
     return hog / (magnitudes.shape[0] * magnitudes.shape[1])
 
